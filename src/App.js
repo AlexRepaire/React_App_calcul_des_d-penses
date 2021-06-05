@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ExpenseItem from "./components/Expenses/ExpenseItem";
+import expenses from "./components/Expenses/ExpensesData";
+import './components/Expenses/Expenses.css';
 
 function App() {
+    const expensesBoucle = expenses.map((expense, index)=>{
+        return (
+            <ExpenseItem key={index} title={expense.title} amount={expense.amount} date={expense.date}/>
+        )
+    });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="expenses">
+        {expensesBoucle}
     </div>
   );
 }
